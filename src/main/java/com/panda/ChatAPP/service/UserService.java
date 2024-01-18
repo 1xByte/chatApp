@@ -25,8 +25,9 @@ public class UserService {
             var u =userRepo.findById(user.getNickName()).orElse(null);
             if(null != u){
                 u.setStatus(Status.OFFLINE);
+                userRepo.save(u);
+
             }
-            userRepo.save(u);
 
         }
 
