@@ -5,20 +5,21 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
+import java.util.Date;
 
 @Setter
 @Getter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity
-public class ChatRoom {
+public class ChatMessage {
 
     @Id
+    private String chatMessageId;
     private String chatId;
-
     private String senderId;
-
     private String receiverId;
-
+    private String content;
+    private Date time;
 }

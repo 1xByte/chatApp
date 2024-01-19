@@ -14,20 +14,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @Controller
-@RequiredArgsConstructor
 public class UserCont {
     private UserService userService;
 
+    public UserCont(UserService userService) {
+        this.userService = userService;
+    }
+
     @MessageMapping("/user.addUser")
-    @SendTo("/user/topic")
+    @SendTo("/user/public")
     public User saveUser(@Payload User user){
 
          userService.saveUser(user);
         return user;
     }
 
-    @MessageMapping("/user.addUser")
-    @SendTo("/user/topic")
+    @MessageMapping("/user.disconnectUser")
+    @SendTo("/user/public")
     public User disConnect(@Payload User user){
         userService.userDisconnect(user);
         return user;

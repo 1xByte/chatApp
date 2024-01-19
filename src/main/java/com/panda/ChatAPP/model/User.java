@@ -1,21 +1,22 @@
 package com.panda.ChatAPP.model;
 
+import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document
+@Entity
 public class User {
 
     @Id
+    private String userId;
     private String nickName;
 
     private String fullName;
 
+    @Enumerated
     private Status status;
 }
